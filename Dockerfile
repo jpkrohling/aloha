@@ -6,4 +6,6 @@ ENV AB_JOLOKIA_AUTH_OPENSHIFT true
 
 EXPOSE 8080
 
+RUN chgrp -R 0 /app/
+RUN chmod -R g+rw /app/
 ADD target/aloha-fat.jar /app/

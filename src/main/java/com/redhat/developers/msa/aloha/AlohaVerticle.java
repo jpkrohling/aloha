@@ -115,7 +115,7 @@ public class AlohaVerticle extends AbstractVerticle {
      */
     private BonjourService getNextService() {
         final Brave brave = new Brave.Builder("aloha")
-            .spanCollector(HttpSpanCollector.create("http://zipkin-query:9411", new EmptySpanCollectorMetricsHandler()))
+            .spanCollector(HttpSpanCollector.create("http://hawkular-apm-server:8080", new EmptySpanCollectorMetricsHandler()))
             .build();
         final String serviceName = "bonjour";
         // This stores the Original/Parent ServerSpan from ZiPkin.
