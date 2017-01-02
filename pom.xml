@@ -46,7 +46,7 @@
 		<vertx.version>3.3.3</vertx.version>
 		<hystrix.version>1.5.1</hystrix.version>
 		<version.exec.plugin>1.4.0</version.exec.plugin>
-		<brave.version>3.9.1</brave.version>
+		<version.io.opentracing>0.16.0</version.io.opentracing>
 
 		<!-- fabric8 version -->
 		<fabric8.version>2.2.105</fabric8.version>
@@ -122,26 +122,54 @@
 			<version>${hystrix.version}</version>
 		</dependency>
 
-		<!-- Brave Zipkin -->
+		<!-- OpenTracing -->
 		<dependency>
-			<groupId>io.zipkin.brave</groupId>
-			<artifactId>brave-web-servlet-filter</artifactId>
-			<version>${brave.version}</version>
+			<groupId>io.opentracing</groupId>
+			<artifactId>opentracing-api</artifactId>
+			<version>${version.io.opentracing}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.zipkin.brave</groupId>
-			<artifactId>brave-apache-http-interceptors</artifactId>
-			<version>${brave.version}</version>
+			<groupId>org.hawkular.apm</groupId>
+			<artifactId>hawkular-apm-client-opentracing</artifactId>
+			<version>0.13.0.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>io.zipkin.brave</groupId>
-			<artifactId>brave-spancollector-http</artifactId>
-			<version>${brave.version}</version>
+			<groupId>org.hawkular.apm</groupId>
+			<artifactId>hawkular-apm-trace-publisher-rest-client</artifactId>
+			<version>0.13.0.Final</version>
+		</dependency>
+
+		<!--
+			Let's override the jackson libraries, as we have an incompatibility between the versions
+			required by Hawkular APM and the one for vert.x
+		 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
